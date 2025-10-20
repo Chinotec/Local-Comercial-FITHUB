@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>FitHub | Promociones</title>
+  <meta name="description" content="Promociones de FitHub - Suplementos y accesorios" />
+  <link rel="stylesheet" href="assets/css/styles.css" />
+</head>
+
+<body>
+  <!-- HEADER: Copia tu header habitualmente usado o usa el del sitio -->
+  <header class="site-header">
+    <div class="container header-inner" style="display:flex;align-items:center;justify-content:space-between;">
+      <a href="index.html" class="brand" style="display:flex;align-items:center;gap:.5rem;text-decoration:none;">
+        <img src="assets/img/logo_bw.png" alt="FitHub" class="brand-logo" style="height:40px;">
+        <span class="brand-name" style="font-weight:700;color:#111;">FitHub</span>
+      </a>
+      <nav class="main-nav" aria-label="Principal">
+        <ul style="display:flex;gap:1rem;list-style:none;margin:0;padding:0;">
+          <li><a href="index.html">Inicio</a></li>
+          <li><a href="nosotros.html">Nosotros</a></li>
+          <li><a href="productos.html">Productos</a></li>
+          <li><a href="novedades.html">Novedades</a></li>
+          <li><a href="promociones.html" style="font-weight:700;text-decoration:underline;">Promociones</a></li>
+          <li><a class="btn btn-primary" href="contacto.html">Contacto</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <div class="promos-container">
+      <div class="promos-header">
+        <div>
+          <h1>Promociones</h1>
+          <p style="color:#555;margin:.25rem 0 0 0;">Seleccioná productos y cantidades para ver el total y descuentos aplicados.</p>
+        </div>
+        <div class="promos-explain">
+          <span class="promo-pill">1) Llevá 2 y obtené 50% en el 2º</span>
+          <span class="promo-pill">2) 3x2 en productos seleccionados</span>
+          <span class="promo-pill">3) 10% off en compras > $30.000</span>
+        </div>
+      </div>
+
+      <form class="promo-form" id="promoForm" onsubmit="return false;">
+        <!-- Lista de productos -->
+        <div class="product-list" aria-labelledby="productos-titulo">
+          <h2 id="productos-titulo" style="margin:0 0 .5rem 0;">Productos</h2>
+
+          <!-- Producto 1 -->
+          <div class="product-row" data-product-id="1" data-price="24990" data-promo-3x2="false" data-promo-half="true">
+            <div class="product-info">
+              <h4>Creatina Monohidratada</h4>
+              <div class="muted">300 g</div>
+            </div>
+            <div class="product-price">$ <span class="price">24.990</span></div>
+            <div class="product-controls">
+              <label for="qty-1" class="sr-only">Cantidad</label>
+              <input type="number" id="qty-1" class="qty-input" min="0" value="0" />
+            </div>
+          </div>
+
+          <!-- Producto 2 (3x2 eligible) -->
+          <div class="product-row" data-product-id="2" data-price="9990" data-promo-3x2="true" data-promo-half="false">
+            <div class="product-info">
+              <h4>Shaker Antiderrame</h4>
+              <div class="muted">700 ml</div>
+            </div>
+            <div class="product-price">$ <span class="price">9.990</span></div>
+            <div class="product-controls">
+              <input type="number" id="qty-2" class="qty-input" min="0" value="0" />
+            </div>
+          </div>
+
+          <!-- Producto 3 -->
+          <div class="product-row" data-product-id="3" data-price="14990" data-promo-3x2="false" data-promo-half="true">
+            <div class="product-info">
+              <h4>Multivitamínico</h4>
+              <div class="muted">90 cápsulas</div>
+            </div>
+            <div class="product-price">$ <span class="price">14.990</span></div>
+            <div class="product-controls">
+              <input type="number" id="qty-3" class="qty-input" min="0" value="0" />
+            </div>
+          </div>
+
+          <div class="btn-row" style="margin-top:0.75rem;">
+            <button class="btn ghost" id="resetBtn" type="button">Restablecer</button>
+            <button class="btn primary" id="calcBtn" type="button">Calcular</button>
+          </div>
+        </div>
+
+        <!-- Panel resultados -->
+        <aside class="results" aria-live="polite">
+          <h3>Resumen</h3>
+          <div class="result-row">
+            <span>Total sin descuento</span>
+            <strong>$ <span id="totalNoDesc">0</span></strong>
+          </div>
+          <div class="result-row small">
+            <span>Descuento (Llevá2 -50% en 2º)</span>
+            <span>$ <span id="descHalf">0</span></span>
+          </div>
+          <div class="result-row small">
+            <span>Descuento (3x2)</span>
+            <span>$ <span id="desc3x2">0</span></span>
+          </div>
+          <div class="result-row small">
+            <span>Descuento (10% por > $30.000)</span>
+            <span>$ <span id="desc10p">0</span></span>
+          </div>
+
+          <div class="result-row">
+            <span>Total descuentos</span>
+            <strong>$ <span id="totalDescuentos">0</span></strong>
+          </div>
+
+          <div class="result-row">
+            <span>Subtotal con descuentos</span>
+            <strong>$ <span id="subtotal">0</span></strong>
+          </div>
+
+          <div class="final-total">
+            Total final: $ <span id="totalFinal">0</span>
+          </div>
+        </aside>
+      </form>
+    </div>
+  </main>
+
+  <!-- FOOTER (igual que el del sitio) -->
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div>
+        <h4>Contacto</h4>
+        <ul class="footer-contact">
+          <li>WhatsApp: +54 9 11 3254-3475</li>
+          <li>Email: fithub@gmail.com</li>
+          <li>Buenos Aires, Argentina</li>
+        </ul>
+      </div>
+    </div>
+    <div class="container footer-bottom">
+      <small>© <span id="yearFooter"></span> FitHub. Todos los derechos reservados.</small>
+    </div>
+  </footer>
+
+  <script src="assets/promociones.js"></script>
+</body>
+</html>
